@@ -3,17 +3,38 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
 // Collect employee data
 
+// const employeeData = [
+//   {
+//       firstName:'What is yopur first name?',
+//       lastName:'What is your last name?',
+//       salary:'How much do you make?'
+//   },
+// ]
 
-const collectEmployees = function(){
+firstName=''
+lastName=''
+salary=''
+
+
+//stored empty array to laster hold promp inputs
+const employeesArray = []
+
+const collectEmployees = function() {
+  let continueAdd = true
   const firstName= prompt('What is your first name?')
   const lastName=prompt('What is your last name?')
   const salary= prompt('What is your salary?')
+  employeesArray.push( { firstName: firstName, lastName: lastName, salary: salary } )
+  continueAdd = confirm("Add another employee?")
+  if (continueAdd) {
+    collectEmployees()
+  } else{
+    return employeesArray
+  }
+  
+  // console.log(firstName+lastName)
 }
 
-collectEmployees()
-
-// const employeesArray[]
-  
 
 
 
@@ -27,18 +48,27 @@ collectEmployees()
  
 
 
-
+//crate a loop throught the area to grab the salary
+//start with a varaibale that =0
+//make sure it's converted wfrom a sting value to a number
 
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
+  for(let i=0; i<collectEmployees.length, i++;);
 
-  // TODO: Calculate and display the average salary
 }
 
 
+function genRandomNumber(min, max){
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
 
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
+  const idx = genRandomNumber(0, employeesArray.length - 1);
+
+
+
   // TODO: Select and display a random employee
 }
 
