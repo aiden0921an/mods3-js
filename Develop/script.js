@@ -11,25 +11,26 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 //   },
 // ]
 
-firstName=''
-lastName=''
-salary=''
+// firstName=''
+// lastName=''
+// salary=''
 
 
-//stored empty array to laster hold promp inputs
-const employeesArray = []
+//stored empty array to store promp inputs
+let employeesArr = []
 
 const collectEmployees = function() {
   let continueAdd = true
   const firstName= prompt('What is your first name?')
   const lastName=prompt('What is your last name?')
   const salary= prompt('What is your salary?')
-  employeesArray.push( { firstName: firstName, lastName: lastName, salary: salary } )
+  employeesArr.push( { firstName: firstName, lastName: lastName, salary: salary } )
   continueAdd = confirm("Add another employee?")
   if (continueAdd) {
     collectEmployees()
   } else{
-    return employeesArray
+    console.log(employeesArr)
+    return employeesArr
   }
   
   // console.log(firstName+lastName)
@@ -53,10 +54,15 @@ const collectEmployees = function() {
 //make sure it's converted wfrom a sting value to a number
 
 // Display the average salary
-const displayAverageSalary = function(employeesArray) {
-  for(let i=0; i<collectEmployees.length, i++;);
 
+const displayAverageSalary = function() {
+  let sum= 0
+  for(let i=0; i < employeesArr.length, i++;){
+    sum += parseFloat(employeesArr[i].salary)
+  }
+  console.log(sum/ employeesArr.length)
 }
+
 
 
 function genRandomNumber(min, max){
@@ -65,7 +71,7 @@ function genRandomNumber(min, max){
 
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
-  const idx = genRandomNumber(0, employeesArray.length - 1);
+  const idx = genRandomNumber(i=0, employeesArray - 1);
 
 
 
@@ -116,9 +122,9 @@ const displayEmployees = function(employeesArray) {
 const trackEmployeeData = function() {
   const employees = collectEmployees();
 
-  console.table(employees);
+  console.log(employeesArr);
 
-  displayAverageSalary(employees);
+  displayAverageSalary(employeesArr);
 
   console.log('==============================');
 
@@ -132,7 +138,7 @@ const trackEmployeeData = function() {
     }
   });
 
-  displayEmployees(employees);
+  displayEmployees(employeesArr);
 }
 
 // Add event listener to 'Add Employees' button
