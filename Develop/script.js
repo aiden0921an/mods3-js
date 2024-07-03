@@ -21,7 +21,7 @@ const collectEmployees = function(currentArray=[]) {
     return currentArray
   }
   
-  // console.log(firstName+lastName)
+  
 }
 
 
@@ -57,13 +57,14 @@ const displayAverageSalary = function(employeesArr) {
 
 
 
-function genRandomNumber(min, max){
+function genRandomNumber(min,max){
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
-  const idx = genRandomNumber(i=0, employeesArray - 1);
+  const idx = genRandomNumber(0, employeesArray.length - 1);
+    console.log( employeesArray[idx] );
 
 
 
