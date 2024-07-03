@@ -3,34 +3,22 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 
 // Collect employee data
 
-// const employeeData = [
-//   {
-//       firstName:'What is yopur first name?',
-//       lastName:'What is your last name?',
-//       salary:'How much do you make?'
-//   },
-// ]
-
-// firstName=''
-// lastName=''
-// salary=''
 
 
-//stored empty array to store promp inputs
-let employeesArr = []
 
-const collectEmployees = function() {
-  let continueAdd = true
+//stored empty array to store promp inputs on line 11
+
+const collectEmployees = function(currentArray=[]) {
   const firstName= prompt('What is your first name?')
   const lastName=prompt('What is your last name?')
   const salary= prompt('What is your salary?')
-  employeesArr.push( { firstName: firstName, lastName: lastName, salary: salary } )
-  continueAdd = confirm("Add another employee?")
+  currentArray.push( { firstName: firstName, lastName: lastName, salary: salary } )
+  const continueAdd = confirm("Add another employee?")
   if (continueAdd) {
-    collectEmployees()
+    return collectEmployees(currentArray)
   } else{
-    console.log(employeesArr)
-    return employeesArr
+    console.log(currentArray)
+    return currentArray
   }
   
   // console.log(firstName+lastName)
@@ -55,12 +43,16 @@ const collectEmployees = function() {
 
 // Display the average salary
 
-const displayAverageSalary = function() {
+const displayAverageSalary = function(employeesArr) {
+  console.log(employeesArr)
   let sum= 0
-  for(let i=0; i < employeesArr.length, i++;){
+  for(let i=0; i < employeesArr.length; i++){
+    console.log(parseFloat(employeesArr[i].salary))
     sum += parseFloat(employeesArr[i].salary)
   }
+  console.log(sum)
   console.log(sum/ employeesArr.length)
+  return sum/ employeesArr.length
 }
 
 
@@ -122,9 +114,9 @@ const displayEmployees = function(employeesArray) {
 const trackEmployeeData = function() {
   const employees = collectEmployees();
 
-  console.log(employeesArr);
+  console.log(employees) 
 
-  displayAverageSalary(employeesArr);
+  displayAverageSalary(employees);
 
   console.log('==============================');
 
@@ -138,8 +130,8 @@ const trackEmployeeData = function() {
     }
   });
 
-  displayEmployees(employeesArr);
+  displayEmployees(employees);
 }
 
 // Add event listener to 'Add Employees' button
-addEmployeesBtn.addEventListener('click', trackEmployeeData);
+  addEmployeesBtn.addEventListener('click', trackEmployeeData);
